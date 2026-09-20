@@ -4,7 +4,7 @@ const navigation = [
   { name: "Discover", href: "/" },
   { name: "About", href: "#about-section" },
   { name: "Destination", href: "#destination-section" },
-  { name: "Contact", href: "#contact-section" },
+  { name: "Explore", href: "#explore-section" },
 ];
 
 export default function Navbar() {
@@ -31,7 +31,7 @@ export default function Navbar() {
             href="/projects"
             className="group inline-flex w-fit items-center gap-3 rounded-xl border border-border px-5 py-3 text-xs font-semibold uppercase tracking-[0.08em] transition-colors duration-300 hover:bg-muted hover:text-white"
           >
-            <span className="text-white">Lets Explore</span>
+            <span className="text-white">Let&apos;s Explore</span>
             <span
               aria-hidden="true"
               className="transition-transform duration-300 group-hover:translate-x-1 text-white"
