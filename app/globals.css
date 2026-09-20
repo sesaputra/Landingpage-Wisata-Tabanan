@@ -1,18 +1,53 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-tabanan-bg: #F5F2EA;
+  --color-tabanan-white: #FAF9F5;
+
+  --color-tabanan-dark: #1D211D;
+  --color-tabanan-muted: #5F625B;
+
+  --color-tabanan-green: #304B3A;
+  --color-tabanan-sage: #71806A;
+
+  --color-tabanan-rice: #A6A86B;
+  --color-tabanan-sand: #C7B99A;
+
+  --color-tabanan-border: #D8D3C7;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: var(--color-tabanan-bg);
+  --color-foreground: var(--color-tabanan-dark);
+  --color-muted: var(--color-tabanan-muted);
+  --color-border: var(--color-tabanan-border);
+  --color-primary: var(--color-tabanan-green);
+  --color-secondary: var(--color-tabanan-sage);
+  --color-accent: var(--color-tabanan-rice);
+  --color-highlight: var(--color-tabanan-sand);
+  --color-putih: var(--color-tabanan-white);
+  
 }
 
-@media (prefers-color-scheme: dark) {
+*{
+  box-sizing: border-box;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+body{
+  margin: 0;
+  background: var(--color-tabanan-bg);
+  color: var(--color-tabanan-dark);
+}
+
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
@@ -22,5 +57,5 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+  font-family: Arial, Helvetica, sans-serif; */
+/* } */
