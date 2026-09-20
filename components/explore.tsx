@@ -2,11 +2,14 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
+import Weather from "@/components/weather";
 
 const mapLocations = [
   {
     number: "01",
     name: "Jatiluwih",
+    latitude: -8.3617,
+    longitude: 115.1153,
     description:
       "Rice terraces and peaceful countryside surrounded by the natural landscape of Tabanan.",
     mapUrl:
@@ -15,6 +18,8 @@ const mapLocations = [
   {
     number: "02",
     name: "Batukaru",
+    latitude: -8.3904,
+    longitude: 115.1112,
     description:
       "Mountain landscapes, forest, and peaceful surroundings at the heart of Tabanan.",
     mapUrl:
@@ -23,6 +28,8 @@ const mapLocations = [
   {
     number: "03",
     name: "Tanah Lot",
+    latitude: -8.6175,
+    longitude: 115.0876,
     description:
       "A dramatic coastal landscape where a Balinese temple meets the Indian Ocean.",
     mapUrl:
@@ -31,6 +38,8 @@ const mapLocations = [
   {
     number: "04",
     name: "Bedugul",
+    latitude: -8.2786,
+    longitude: 115.16,
     description:
       "Cool highlands, peaceful lakes, and mountain scenery surrounded by nature.",
     mapUrl:
@@ -39,6 +48,8 @@ const mapLocations = [
   {
     number: "05",
     name: "Kerambitan",
+    latitude: -8.5451,
+    longitude: 115.0818,
     description:
       "Traditional villages, cultural heritage, and everyday Balinese life in Tabanan.",
     mapUrl:
@@ -394,7 +405,7 @@ export default function ExploreMap() {
         </div>
 
         {/* =====================================================
-            SELECTED DESTINATION INFO
+            SELECTED DESTINATION + WEATHER
         ====================================================== */}
         <AnimatePresence mode="wait">
           <motion.div
@@ -414,21 +425,37 @@ export default function ExploreMap() {
             transition={{
               duration: 0.5,
             }}
-            className="mt-8 flex flex-col justify-between gap-4 md:flex-row md:items-center"
+            className="mt-8 grid gap-8 border-b border-border/40 pb-8 md:grid-cols-[1fr_auto]"
           >
-            <div>
+            {/* DESTINATION INFO */}
+            <div className="max-w-xl">
               <p className="text-[10px] font-medium uppercase tracking-[0.15em] text-highlight/60">
                 Selected destination
               </p>
 
-              <p className="mt-1 font-serif text-xl text-border">
+              <p className="mt-1 font-serif text-2xl text-border md:text-3xl">
                 {activeLocation.name}
+              </p>
+
+              <p className="mt-3 max-w-md text-sm leading-6 text-highlight/70">
+                {activeLocation.description}
               </p>
             </div>
 
-            <p className="max-w-md text-sm leading-6 text-highlight/70 md:text-right">
-              {activeLocation.description}
-            </p>
+            {/* WEATHER */}
+            <div className="min-w-[220px] md:text-right">
+              <p className="text-[10px] font-medium uppercase tracking-[0.15em] text-highlight/60">
+                Weather today
+              </p>
+
+              <div className="mt-3 md:flex md:justify-end">
+                <Weather
+                  latitude={activeLocation.latitude}
+                  longitude={activeLocation.longitude}
+                  locationName={activeLocation.name}
+                />
+              </div>
+            </div>
           </motion.div>
         </AnimatePresence>
       </div>

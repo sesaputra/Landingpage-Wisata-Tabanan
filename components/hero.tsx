@@ -29,7 +29,7 @@ export default function Hero() {
       </motion.div>
 
       {/* Hero Panel */}
-      <div className="absolute top-0 right-15 bottom-10 left-15 overflow-hidden rounded-xl md:right-15 md:bottom-25 md:left-15">
+      <div className="absolute top-0 right-0 bottom-10 left-0 overflow-hidden rounded-none md:right-15 md:bottom-25 md:left-15 md:rounded-xl">
         {/* Overlay */}
         <motion.div
           className="absolute inset-0 bg-black/30"
@@ -114,18 +114,23 @@ export default function Hero() {
             <span aria-hidden="true">→</span>
           </motion.button>
         </div>
+
         <motion.div
-         initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{
-              duration: 0.7,
-              delay: 0.1,
-              ease: "easeOut",
-            }}
-        className="absolute bottom-8 right-8 md:bottom-16 lg:bottom-24">
-    <Weather />
-  </motion.div>
+  initial={{ opacity: 0, x: 30 }}
+  animate={{ opacity: 1, x: 0 }}
+  transition={{
+    duration: 0.8,
+    delay: 1.3,
+    ease: [0.22, 1, 0.36, 1],
+  }}
+  className="absolute bottom-8 right-8 md:bottom-16 lg:bottom-24"
+>
+  <Weather
+  latitude={-8.5413}
+  longitude={115.150475}
+  locationName="Tabanan"
+/>
+</motion.div>
       </div>
     </section>
   );

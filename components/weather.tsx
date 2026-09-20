@@ -14,45 +14,68 @@ type WeatherData = {
   };
 };
 
+type WeatherProps = {
+  latitude: number;
+  longitude: number;
+  locationName: string;
+};
+
 function getWeatherDescription(code: number) {
   switch (code) {
     case 0:
       return "Clear Sky";
+
     case 1:
       return "Mostly Clear";
+
     case 2:
       return "Partly Cloudy";
+
     case 3:
       return "Overcast";
+
     case 45:
     case 48:
       return "Foggy";
+
     case 51:
     case 53:
     case 55:
       return "Drizzle";
+
     case 61:
     case 63:
     case 65:
       return "Rain";
+
     case 80:
     case 81:
     case 82:
       return "Rain Showers";
+
     case 95:
       return "Thunderstorm";
+
     default:
       return "Unknown";
   }
 }
 
-export default function Weather() {
+export default function Weather({
+  latitude,
+  longitude,
+  locationName,
+}: WeatherProps) {
   const [weather, setWeather] = useState<WeatherData | null>(null);
 
   useEffect(() => {
     async function fetchWeather() {
       try {
-        const response = await fetch("/api/weather");
+        setWeather(null);
+
+        const response = await fetch(
+          `/api/weather?latitude=${latitude}&longitude=${longitude}`,
+        );
 
         if (!response.ok) {
           throw new Error("Failed to fetch weather");
@@ -67,7 +90,7 @@ export default function Weather() {
     }
 
     fetchWeather();
-  }, []);
+  }, [latitude, longitude]);
 
   if (!weather) {
     return (
@@ -83,7 +106,7 @@ export default function Weather() {
   return (
     <div className="text-white">
       <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-white/60">
-        Tabanan Today
+        {locationName} Today
       </p>
 
       <div className="mt-2 flex items-end gap-2">
@@ -101,9 +124,13 @@ export default function Weather() {
       </p>
 
       <div className="mt-3 flex gap-4 text-[10px] uppercase tracking-[0.08em] text-white/50">
-        <span>{current.relative_humidity_2m}% humidity</span>
+        <span>
+          {current.relative_humidity_2m}% humidity
+        </span>
 
-        <span>{current.wind_speed_10m} km/h wind</span>
+        <span>
+          {current.wind_speed_10m} km/h wind
+        </span>
       </div>
     </div>
   );
