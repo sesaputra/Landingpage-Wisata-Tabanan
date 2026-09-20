@@ -4,6 +4,7 @@ import Destination from "@/components/destination"
 import Experience from "@/components/experience"
 import Culture from "@/components/culture"
 import Explore from "@/components/explore"
+import Weather from "@/components/weather"
 
 export default function Home() {
   return (

@@ -1,5 +1,6 @@
 "use client";
 
+import Weather from "@/components/weather";
 import Image from "next/image";
 import { motion } from "motion/react";
 
@@ -113,6 +114,18 @@ export default function Hero() {
             <span aria-hidden="true">→</span>
           </motion.button>
         </div>
+        <motion.div
+         initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{
+              duration: 0.7,
+              delay: 0.1,
+              ease: "easeOut",
+            }}
+        className="absolute bottom-8 right-8 md:bottom-16 lg:bottom-24">
+    <Weather />
+  </motion.div>
       </div>
     </section>
   );
