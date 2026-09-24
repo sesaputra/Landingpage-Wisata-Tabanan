@@ -164,7 +164,7 @@ export default function About() {
             </div>
 
             <figcaption className="text-xs font-medium uppercase tracking-[0.1em] text-foreground/70">
-              Pantai
+              BEACH
             </figcaption>
           </motion.figure>
 
