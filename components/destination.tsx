@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 
@@ -392,18 +393,27 @@ export default function Destination() {
             className="mt-16 flex justify-center"
           >
             <button
-              type="button"
-              className="rounded-full border border-muted px-6 py-3 text-xs font-semibold uppercase tracking-[0.1em] text-foreground transition-all duration-300 hover:scale-[1.03] hover:bg-foreground hover:text-white"
-            >
-              More Destination
+                      type="button"
+                      onClick={() => {
+                        setSelectedDestination(null);
 
-              <span
-                aria-hidden="true"
-                className="ml-2"
-              >
-                →
-              </span>
-            </button>
+                        setTimeout(() => {
+                          document
+                            .getElementById("explore-section")
+                            ?.scrollIntoView({
+                              behavior: "smooth",
+                              block: "start",
+                            });
+                        }, 200);
+                      }}
+                      className="group inline-flex items-center gap-3 rounded-full border border-muted px-6 py-3 text-xs font-semibold uppercase tracking-[0.1em] text-foreground transition-all duration-300 hover:scale-[1.03] hover:bg-foreground hover:text-white"
+                    >
+                      MORE DESTINATION
+
+                      <span className="transition-transform duration-300 group-hover:translate-x-1">
+                        →
+                      </span>
+                    </button>
           </motion.div>
         </div>
       </section>
